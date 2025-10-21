@@ -1,8 +1,14 @@
+using UnityEditor;
 using UnityEngine;
 
 public class Path : MonoBehaviour
 {
     public GameObject[] Waypoints;
+
+    public Vector3 GetPosition(int index)
+    {
+        return Waypoints[index].transform.position;
+    }
 
     private void OnDrawGizmos()
     {
@@ -10,6 +16,10 @@ public class Path : MonoBehaviour
         {
             for (int i = 0; i < Waypoints.Length; i++)
             {
+                GUIStyle style = new GUIStyle();
+                style.normal.textColor = Color.white;
+                style.alignment = TextAnchor.MiddleCenter;
+                Handles.Label(Waypoints[i].transform.position + Vector3.up, Waypoints[i].name, style);
                 if (i < Waypoints.Length - 1)
                 {
                     Gizmos.color = Color.gray;
