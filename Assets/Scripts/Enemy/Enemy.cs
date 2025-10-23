@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private Path currentPath;
+    private Path currentPath;
     private Vector3 targetPosition;
     private int currentWaypoint;
 
