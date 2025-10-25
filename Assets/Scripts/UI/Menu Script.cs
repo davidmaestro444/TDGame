@@ -17,6 +17,9 @@ public class MenuScript : MonoBehaviour
         startButton.onClick.AddListener(StartGame);
         settingsButton.onClick.AddListener(OpenSettings);
         exitButton.onClick.AddListener(ExitGame);
+        mainGameObject.SetActive(false);
+        settingsObject.SetActive(false);
+        menuObject.SetActive(true);
     }
 
     void StartGame()
