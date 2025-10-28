@@ -3509,51 +3509,58 @@ MonoBehaviour:
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 5
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 1
   - name: Wave2
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 10
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 1
   - name: Wave3
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 10
+      timeBetweenSpawns: 1
     - enemyPrefab: {fileID: 3406353722737930721, guid: fec93248964040f4fadb7b68e7fb3f22, type: 3}
       count: 2
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 2
   - name: Wave4
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 15
+      timeBetweenSpawns: 1
     - enemyPrefab: {fileID: 3406353722737930721, guid: fec93248964040f4fadb7b68e7fb3f22, type: 3}
       count: 4
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 2
   - name: Wave5
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 20
+      timeBetweenSpawns: 1
     - enemyPrefab: {fileID: 3406353722737930721, guid: fec93248964040f4fadb7b68e7fb3f22, type: 3}
       count: 6
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 2
   - name: Wave6
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 20
+      timeBetweenSpawns: 1
     - enemyPrefab: {fileID: 3406353722737930721, guid: fec93248964040f4fadb7b68e7fb3f22, type: 3}
       count: 4
+      timeBetweenSpawns: 2
     - enemyPrefab: {fileID: 3406353722737930721, guid: 73b35c8dbb0aac548bb18192fcca0337, type: 3}
       count: 1
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 3
   - name: Wave7
     enemyGroups:
     - enemyPrefab: {fileID: 3406353722737930721, guid: 0240b8f664c803e40b618e45c2b529f9, type: 3}
       count: 20
+      timeBetweenSpawns: 1
     - enemyPrefab: {fileID: 3406353722737930721, guid: fec93248964040f4fadb7b68e7fb3f22, type: 3}
       count: 5
+      timeBetweenSpawns: 2
     - enemyPrefab: {fileID: 3406353722737930721, guid: 73b35c8dbb0aac548bb18192fcca0337, type: 3}
       count: 3
-    timeBetweenSpawns: 1
+      timeBetweenSpawns: 3
   timeBetweenWaves: 5
 --- !u!4 &1222824039
 Transform:

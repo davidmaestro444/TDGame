@@ -41,7 +41,6 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         currentHealth -= damageAmount;
-        Debug.Log(gameObject.name + " sebzõdött! Aktuális élete: " + currentHealth);
 
         if (currentHealth <= 0)
         {
@@ -51,7 +50,6 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log(gameObject.name + " meghalt!");
         gameObject.SetActive(false);
     }
 }

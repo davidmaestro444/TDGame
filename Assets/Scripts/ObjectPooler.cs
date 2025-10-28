@@ -10,7 +10,7 @@ public class ObjectPooler : MonoBehaviour
     [SerializeField] private int poolSize = 5;
     private List<GameObject> pool;
 
-    void Start()
+    void Awake()
     {
         pool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
