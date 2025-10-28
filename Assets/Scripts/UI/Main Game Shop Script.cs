@@ -39,6 +39,12 @@ public class ButtonScript : MonoBehaviour
         }
 
         currentRobot = Instantiate(robot, Vector3.zero, Quaternion.identity);
+
+        Tower towerScript = currentRobot.GetComponent<Tower>();
+        if (towerScript != null)
+        {
+            towerScript.enabled = false;
+        }
     }
 
     private void PlaceRobot()
@@ -52,10 +58,15 @@ public class ButtonScript : MonoBehaviour
             if (towerSpot != null && !towerSpot.isOccupied)
             {
                 currentRobot.transform.position = hit.collider.transform.position;
-                Debug.Log("Robot lerakva ide: " + hit.collider.name);
-
                 towerSpot.isOccupied = true;
 
+                Tower towerScript = currentRobot.GetComponent<Tower>();
+                if (towerScript != null)
+                {
+                    towerScript.enabled = true;
+                }
+
+                Debug.Log("Robot lerakva ide: " + hit.collider.name);
                 currentRobot = null;
             }
             else
