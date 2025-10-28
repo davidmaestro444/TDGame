@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyData data;
-
+    private float currentHealth;
     private Path currentPath;
     private Vector3 targetPosition;
     private int currentWaypoint;
@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
 
     private void OnEnable()
     {
+        currentHealth = data.lives;
         currentWaypoint = 0;
         targetPosition = currentPath.GetPosition(currentWaypoint);
     }
@@ -35,5 +36,22 @@ public class Enemy : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    public void TakeDamage(float damageAmount)
+    {
+        currentHealth -= damageAmount;
+        Debug.Log(gameObject.name + " sebzõdött! Aktuális élete: " + currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Debug.Log(gameObject.name + " meghalt!");
+        gameObject.SetActive(false);
     }
 }

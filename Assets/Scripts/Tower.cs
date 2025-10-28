@@ -5,9 +5,10 @@ public class Tower : MonoBehaviour
     [Header("Attributes")]
     public float range = 3f;
     public float fireRate = 1f;
+    public int damage = 2;
     private float fireCountdown = 0f;
 
-    [Header("Unity Setup Fields")]
+    [Header("Setup")]
     public string enemyTag = "Enemy";
     public GameObject bulletPrefab;
     private Transform target;
@@ -64,6 +65,7 @@ public class Tower : MonoBehaviour
         Bullet bullet = bulletObject.GetComponent<Bullet>();
         if (bullet != null)
         {
+            bullet.SetDamage(damage);
             bullet.Seek(target);
         }
     }

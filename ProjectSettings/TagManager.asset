@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - TowerSpot
+  - Enemy
   layers:
   - Default
   - TransparentFX

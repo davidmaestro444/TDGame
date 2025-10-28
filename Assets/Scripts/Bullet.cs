@@ -3,8 +3,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Transform target;
-
     public float speed = 50f;
+    private int damage;
+    public void SetDamage(int _damage)
+    {
+        damage = _damage;
+    }
 
     public void Seek(Transform _target)
     {
@@ -33,8 +37,12 @@ public class Bullet : MonoBehaviour
 
     void HitTarget()
     {
-        Debug.Log("ELTALÁLVA!");
+        Enemy enemy = target.GetComponent<Enemy>();
 
+        if (enemy != null)
+        {
+            enemy.TakeDamage(damage);
+        }
         Destroy(gameObject);
     }
 }
