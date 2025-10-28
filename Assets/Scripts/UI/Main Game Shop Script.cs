@@ -47,10 +47,21 @@ public class ButtonScript : MonoBehaviour
 
         if (hit.collider != null && hit.collider.CompareTag("TowerSpot"))
         {
-            currentRobot.transform.position = hit.collider.transform.position;
-            Debug.Log("Robot lerakva ide: " + hit.collider.name);
+            TowerSpot towerSpot = hit.collider.GetComponent<TowerSpot>();
 
-            currentRobot = null;
+            if (towerSpot != null && !towerSpot.isOccupied)
+            {
+                currentRobot.transform.position = hit.collider.transform.position;
+                Debug.Log("Robot lerakva ide: " + hit.collider.name);
+
+                towerSpot.isOccupied = true;
+
+                currentRobot = null;
+            }
+            else
+            {
+                Debug.Log("Ez a hely már foglalt!");
+            }
         }
         else
         {

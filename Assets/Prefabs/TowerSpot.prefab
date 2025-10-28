@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5726599906682886458}
   - component: {fileID: 160524433742015089}
   - component: {fileID: 3622265887070422874}
+  - component: {fileID: 2959494366175992341}
   m_Layer: 0
   m_Name: TowerSpot
   m_TagString: TowerSpot
@@ -134,3 +135,16 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.8828125}
   m_EdgeRadius: 0
+--- !u!114 &2959494366175992341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952252404090128955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fea877dc7194f41b310278d4f11517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isOccupied: 0
