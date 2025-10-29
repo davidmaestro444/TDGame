@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         currentPath = GameObject.Find("Path").GetComponent<Path>();
+        Debug.Log(currentPath);
     }
 
     private void OnEnable()
@@ -19,11 +20,14 @@ public class Enemy : MonoBehaviour
         currentHealth = data.lives;
         currentWaypoint = 0;
         targetPosition = currentPath.GetPosition(currentWaypoint);
+        
     }
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, data.speed * Time.deltaTime);
+        
         float relativeDistance = (transform.position - targetPosition).magnitude;
+        
         if (relativeDistance < 0.1f)
         {
             if (currentWaypoint < currentPath.Waypoints.Length - 1)
