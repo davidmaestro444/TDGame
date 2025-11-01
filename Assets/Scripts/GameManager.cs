@@ -6,8 +6,19 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int maxHealth = 100;
+    public int startingMoney = 20;
     private int currentHealth;
+    private int currentMoney;
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI moneyText;
+
+    public int CurrentMoney 
+    { 
+        get 
+        { 
+            return currentMoney; 
+        } 
+    }
 
     void Awake()
     {
@@ -24,6 +35,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        currentMoney = startingMoney;
         UpdateUI();
     }
 
@@ -35,9 +47,29 @@ public class GameManager : MonoBehaviour
         if (currentHealth <= 0) GameOver();
     }
 
+    public void AddMoney(int amount)
+    {
+        currentMoney += amount;
+        UpdateUI();
+    }
+
+    public void SpendMoney(int amount)
+    {
+        currentMoney -= amount;
+        UpdateUI();
+    }
+
     void UpdateUI()
     {
-        if (healthText != null) healthText.text = "Életerõ: " + currentHealth;
+        if (healthText != null)
+        {
+            healthText.text = "Életerõ: " + currentHealth;
+        }
+
+        if (moneyText != null)
+        {
+            moneyText.text = "Pénz: " + currentMoney;
+        }
     }
 
     void GameOver()

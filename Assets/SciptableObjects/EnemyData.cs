@@ -6,4 +6,5 @@ public class EnemyData : ScriptableObject
     public float lives;
     public int damage;
     public int speed;
+    public int moneyOnKill;
 }

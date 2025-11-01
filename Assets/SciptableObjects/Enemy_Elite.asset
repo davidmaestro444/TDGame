@@ -15,3 +15,4 @@ MonoBehaviour:
   lives: 5
   damage: 3
   speed: 2
+  moneyOnKill: 3

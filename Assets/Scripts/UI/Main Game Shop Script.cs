@@ -7,8 +7,9 @@ public class ButtonScript : MonoBehaviour
 {
     public GameObject robot;
     public Camera mainCamera;
-
     private GameObject currentRobot;
+
+    public int robotCost = 10;
 
     void Update()
     {
@@ -33,6 +34,12 @@ public class ButtonScript : MonoBehaviour
 
     public void SelectRobotToSpawn()
     {
+        if (GameManager.instance.CurrentMoney < robotCost)
+        {
+            Debug.Log("Nincs elég pénzed!");
+            return;
+        }
+
         if (currentRobot != null)
         {
             return;
@@ -65,7 +72,7 @@ public class ButtonScript : MonoBehaviour
                 {
                     towerScript.enabled = true;
                 }
-
+                GameManager.instance.SpendMoney(robotCost);
                 Debug.Log("Robot lerakva ide: " + hit.collider.name);
                 currentRobot = null;
             }

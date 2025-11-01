@@ -2638,6 +2638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   robot: {fileID: 1404198657}
   mainCamera: {fileID: 1995601319}
+  robotCost: 10
 --- !u!4 &839215264
 Transform:
   m_ObjectHideFlags: 0
@@ -2836,7 +2837,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  startingMoney: 20
   healthText: {fileID: 677477559}
+  moneyText: {fileID: 567945498}
 --- !u!4 &927000527
 Transform:
   m_ObjectHideFlags: 0
