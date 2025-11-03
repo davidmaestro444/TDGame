@@ -7,23 +7,23 @@ public class ButtonScript : MonoBehaviour
 {
     public GameObject robot;
     public Camera mainCamera;
-    private GameObject currentRobot;
+    private GameObject weaponRobot;
 
     public int robotCost = 10;
 
     void Update()
     {
-        if (currentRobot == null)
+        if (weaponRobot == null)
         {
             return;
         }
 
         Vector2 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        currentRobot.transform.position = pos;
+        weaponRobot.transform.position = pos;
 
         if (Input.GetMouseButtonDown(0))
         {
-            PlaceRobot();
+            PlaceWeaponRobot();
         }
 
         if (Input.GetMouseButtonDown(1))
@@ -40,21 +40,21 @@ public class ButtonScript : MonoBehaviour
             return;
         }
 
-        if (currentRobot != null)
+        if (weaponRobot != null)
         {
             return;
         }
 
-        currentRobot = Instantiate(robot, Vector3.zero, Quaternion.identity);
+        weaponRobot = Instantiate(robot, Vector3.zero, Quaternion.identity);
 
-        Tower towerScript = currentRobot.GetComponent<Tower>();
+        Tower towerScript = weaponRobot.GetComponent<Tower>();
         if (towerScript != null)
         {
             towerScript.enabled = false;
         }
     }
 
-    private void PlaceRobot()
+    private void PlaceWeaponRobot()
     {
         RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
@@ -64,17 +64,17 @@ public class ButtonScript : MonoBehaviour
 
             if (towerSpot != null && !towerSpot.isOccupied)
             {
-                currentRobot.transform.position = hit.collider.transform.position;
+                weaponRobot.transform.position = hit.collider.transform.position;
                 towerSpot.isOccupied = true;
 
-                Tower towerScript = currentRobot.GetComponent<Tower>();
+                Tower towerScript = weaponRobot.GetComponent<Tower>();
                 if (towerScript != null)
                 {
                     towerScript.enabled = true;
                 }
                 GameManager.instance.SpendMoney(robotCost);
                 Debug.Log("Robot lerakva ide: " + hit.collider.name);
-                currentRobot = null;
+                weaponRobot = null;
             }
             else
             {
@@ -87,11 +87,83 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
+    void PlaceSniperRobot()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mainCamera.ScreenToViewportPoint(Input.mousePosition), Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.CompareTag("TowerSpot"))
+            {
+                TowerSpot towerSpot = hit.collider.GetComponent<TowerSpot>();
+
+                if (towerSpot != null && towerSpot.isOccupied)
+                {
+                    weaponRobot.transform.position = hit.collider.transform.position;
+                    towerSpot.isOccupied = true;
+
+                    Tower towerScript = weaponRobot.GetComponent<Tower>();
+                    if (towerScript != null)
+                    {
+                        towerScript.enabled = true;
+                    }
+                    GameManager.instance.SpendMoney(robotCost);
+                    Debug.Log("Robot lerakva ide: " + hit.collider.name);
+                    weaponRobot = null;
+                }
+                else
+                {
+                    Debug.Log("Ez a hely már foglalt.");
+                }
+            }
+            else
+            {
+                Debug.Log("Ide nem lehet lerakni!");
+            }
+        }
+    }
+
+    void PlaceMeeleRobot()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mainCamera.ScreenToViewportPoint(Input.mousePosition), Vector2.zero);
+
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null && hit.collider.CompareTag("TowerSpot"))
+            {
+                TowerSpot towerSpot = hit.collider.GetComponent<TowerSpot>();
+
+                if (towerSpot != null && towerSpot.isOccupied)
+                {
+                    weaponRobot.transform.position = hit.collider.transform.position;
+                    towerSpot.isOccupied = true;
+
+                    Tower towerScript = weaponRobot.GetComponent<Tower>();
+                    if (towerScript != null)
+                    {
+                        towerScript.enabled = true;
+                    }
+                    GameManager.instance.SpendMoney(robotCost);
+                    Debug.Log("Robot lerakva ide: " + hit.collider.name);
+                    weaponRobot = null;
+                }
+                else
+                {
+                    Debug.Log("Ez a hely már foglalt.");
+                }
+            }
+            else
+            {
+                Debug.Log("Ide nem lehet lerakni!");
+            }
+        }
+    }
+
     private void CancelPlacement()
     {
         Debug.Log("Lerakás megszakítva.");
-        Destroy(currentRobot);
-        currentRobot = null;
+        Destroy(weaponRobot);
+        weaponRobot = null;
     }
 
 
