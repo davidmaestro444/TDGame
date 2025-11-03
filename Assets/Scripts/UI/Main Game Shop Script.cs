@@ -9,6 +9,7 @@ public class ButtonScript : MonoBehaviour
     public Camera mainCamera;
     private GameObject weaponRobot;
 
+
     public int robotCost = 10;
 
     void Update()
