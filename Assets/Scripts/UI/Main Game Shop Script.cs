@@ -100,6 +100,29 @@ public class ButtonScript : MonoBehaviour
         {
             towerScript.enabled = false;
         }
+
+        //co-pilot írta az alábbit, hogy legyen egy kör a robot körül
+
+        GameObject circle = new GameObject("CircleVisual");
+
+        // SpriteRenderer hozzáadása
+        SpriteRenderer sr = circle.AddComponent<SpriteRenderer>();
+        sr.sprite = Resources.Load<Sprite>("circle"); // A "circle.png" legyen a Resources mappában
+        sr.sortingOrder = -1; // Háttérbe helyezés, hogy ne takarja a robotot
+
+        // Szülõ beállítása
+        circle.transform.parent = currentRobot.transform;
+
+        // Pozíció beállítása relatív a robothoz
+        circle.transform.localPosition = Vector3.zero;
+
+        // Méret módosítása (opcionális)
+        circle.transform.localScale = new Vector3(2f, 2f, 1f); // Például nagyobb kör
+
+        //innentõl én
+
+        circle.SetActive(false);
+
     }
 
     private void PlaceWeaponRobot()
@@ -134,6 +157,12 @@ public class ButtonScript : MonoBehaviour
             Debug.Log("Ide nem lehet lerakni!");
         }
     }
+
+
+
+
+
+
 
     void PlaceSniperRobot()
     {

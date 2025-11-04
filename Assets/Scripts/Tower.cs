@@ -11,11 +11,23 @@ public class Tower : MonoBehaviour
     [Header("Setup")]
     public string enemyTag = "Enemy";
     public GameObject bulletPrefab;
+    public GameObject area;
     private Transform target;
+    private Camera mainCamera;
 
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        mainCamera = Camera.main;
+        if (IsMouseOverThis())
+        {
+            area.SetActive(true);
+        }
+        else
+        {
+            area.SetActive(false);
+        }
+
     }
 
     void UpdateTarget()
@@ -74,5 +86,18 @@ public class Tower : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    bool IsMouseOverThis()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        // Raycast csak akkor tér vissza true-val, ha ez az objektum van legfelül
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return hit.transform == transform;
+        }
+
+        return false;
+
     }
 }
