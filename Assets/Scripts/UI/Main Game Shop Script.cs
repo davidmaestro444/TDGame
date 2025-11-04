@@ -5,22 +5,25 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour
 {
-    public GameObject robot;
+    public GameObject weaponRobot;
+    public GameObject sniperRobot;
+    public GameObject meeleRobot;
     public Camera mainCamera;
-    private GameObject weaponRobot;
+    private GameObject currentRobot;
+
 
 
     public int robotCost = 10;
 
     void Update()
     {
-        if (weaponRobot == null)
+        if (currentRobot == null)
         {
             return;
         }
 
         Vector2 pos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        weaponRobot.transform.position = pos;
+        currentRobot.transform.position = pos;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -33,7 +36,7 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    public void SelectRobotToSpawn()
+    public void SelectWeaponRobotToSpawn()
     {
         if (GameManager.instance.CurrentMoney < robotCost)
         {
@@ -41,14 +44,58 @@ public class ButtonScript : MonoBehaviour
             return;
         }
 
-        if (weaponRobot != null)
+        if (currentRobot != null)
         {
             return;
         }
 
-        weaponRobot = Instantiate(robot, Vector3.zero, Quaternion.identity);
+        currentRobot = Instantiate(weaponRobot, Vector3.zero, Quaternion.identity);
 
-        Tower towerScript = weaponRobot.GetComponent<Tower>();
+        Tower towerScript = currentRobot.GetComponent<Tower>();
+        if (towerScript != null)
+        {
+            towerScript.enabled = false;
+        }
+    }
+
+    public void SelectSniperRobotToSpawn()
+    {
+        if (GameManager.instance.CurrentMoney < robotCost)
+        {
+            Debug.Log("Nincs elég pénzed!");
+            return;
+        }
+
+        if (currentRobot != null)
+        {
+            return;
+        }
+
+        currentRobot = Instantiate(sniperRobot, Vector3.zero, Quaternion.identity);
+
+        Tower towerScript = currentRobot.GetComponent<Tower>();
+        if (towerScript != null)
+        {
+            towerScript.enabled = false;
+        }
+    }
+
+    public void SelectMeeleRobotToSpawn()
+    {
+        if (GameManager.instance.CurrentMoney < robotCost)
+        {
+            Debug.Log("Nincs elég pénzed!");
+            return;
+        }
+
+        if (currentRobot != null)
+        {
+            return;
+        }
+
+        currentRobot = Instantiate(meeleRobot, Vector3.zero, Quaternion.identity);
+
+        Tower towerScript = currentRobot.GetComponent<Tower>();
         if (towerScript != null)
         {
             towerScript.enabled = false;
@@ -65,17 +112,17 @@ public class ButtonScript : MonoBehaviour
 
             if (towerSpot != null && !towerSpot.isOccupied)
             {
-                weaponRobot.transform.position = hit.collider.transform.position;
+                currentRobot.transform.position = hit.collider.transform.position;
                 towerSpot.isOccupied = true;
 
-                Tower towerScript = weaponRobot.GetComponent<Tower>();
+                Tower towerScript = currentRobot.GetComponent<Tower>();
                 if (towerScript != null)
                 {
                     towerScript.enabled = true;
                 }
                 GameManager.instance.SpendMoney(robotCost);
                 Debug.Log("Robot lerakva ide: " + hit.collider.name);
-                weaponRobot = null;
+                currentRobot = null;
             }
             else
             {
@@ -100,17 +147,17 @@ public class ButtonScript : MonoBehaviour
 
                 if (towerSpot != null && towerSpot.isOccupied)
                 {
-                    weaponRobot.transform.position = hit.collider.transform.position;
+                    currentRobot.transform.position = hit.collider.transform.position;
                     towerSpot.isOccupied = true;
 
-                    Tower towerScript = weaponRobot.GetComponent<Tower>();
+                    Tower towerScript = currentRobot.GetComponent<Tower>();
                     if (towerScript != null)
                     {
                         towerScript.enabled = true;
                     }
                     GameManager.instance.SpendMoney(robotCost);
                     Debug.Log("Robot lerakva ide: " + hit.collider.name);
-                    weaponRobot = null;
+                    currentRobot = null;
                 }
                 else
                 {
@@ -136,17 +183,17 @@ public class ButtonScript : MonoBehaviour
 
                 if (towerSpot != null && towerSpot.isOccupied)
                 {
-                    weaponRobot.transform.position = hit.collider.transform.position;
+                    currentRobot.transform.position = hit.collider.transform.position;
                     towerSpot.isOccupied = true;
 
-                    Tower towerScript = weaponRobot.GetComponent<Tower>();
+                    Tower towerScript = currentRobot.GetComponent<Tower>();
                     if (towerScript != null)
                     {
                         towerScript.enabled = true;
                     }
                     GameManager.instance.SpendMoney(robotCost);
                     Debug.Log("Robot lerakva ide: " + hit.collider.name);
-                    weaponRobot = null;
+                    currentRobot = null;
                 }
                 else
                 {
@@ -163,8 +210,8 @@ public class ButtonScript : MonoBehaviour
     private void CancelPlacement()
     {
         Debug.Log("Lerakás megszakítva.");
-        Destroy(weaponRobot);
-        weaponRobot = null;
+        Destroy(currentRobot);
+        currentRobot = null;
     }
 
 

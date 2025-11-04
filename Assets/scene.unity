@@ -342,7 +342,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 839215263}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: SelectRobotToSpawn
+        m_MethodName: SelectSniperRobotToSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -807,7 +807,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 839215263}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: SelectRobotToSpawn
+        m_MethodName: SelectWeaponRobotToSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1553,9 +1553,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d3120f051d9a848b15dd7fba7f89e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  fireRate: 1
-  damage: 1
+  range: 6
+  fireRate: 0.5
+  damage: 2
   enemyTag: Enemy
   bulletPrefab: {fileID: 1092093612033146879, guid: cd55215bf6940864b9ab2f832659db51, type: 3}
 --- !u!212 &435004988
@@ -3007,7 +3007,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a971f90f1c22e4ea377a65df909654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  robot: {fileID: 1404198657}
+  weaponRobot: {fileID: 1404198657}
+  sniperRobot: {fileID: 435004985}
+  meeleRobot: {fileID: 1400774926}
   mainCamera: {fileID: 1995601319}
   robotCost: 10
 --- !u!4 &839215264
@@ -5028,8 +5030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78d3120f051d9a848b15dd7fba7f89e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 3
-  fireRate: 1
+  range: 1.5
+  fireRate: 2
   damage: 1
   enemyTag: Enemy
   bulletPrefab: {fileID: 1092093612033146879, guid: cd55215bf6940864b9ab2f832659db51, type: 3}
@@ -5173,7 +5175,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 839215263}
         m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
-        m_MethodName: SelectRobotToSpawn
+        m_MethodName: SelectMeeleRobotToSpawn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
