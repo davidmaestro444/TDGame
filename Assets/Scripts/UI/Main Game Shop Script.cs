@@ -171,7 +171,7 @@ public class ButtonScript : MonoBehaviour
         }
     }
 
-    void PlaceMeeleRobot()
+    void PlaceTrap()
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(mainCamera.ScreenToViewportPoint(Input.mousePosition), Vector2.zero);
 
@@ -192,7 +192,7 @@ public class ButtonScript : MonoBehaviour
                         towerScript.enabled = true;
                     }
                     GameManager.instance.SpendMoney(robotCost);
-                    Debug.Log("Robot lerakva ide: " + hit.collider.name);
+                    Debug.Log("Csapda lerakva ide: " + hit.collider.name);
                     currentRobot = null;
                 }
                 else
