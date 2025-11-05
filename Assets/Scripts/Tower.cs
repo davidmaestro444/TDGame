@@ -18,12 +18,17 @@ public class Tower : MonoBehaviour
     void Start()
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-        mainCamera = Camera.main;
+        /*mainCamera = Camera.main;
         if (IsMouseOverThis())
         {
             area.SetActive(true);
         }
         else
+        {
+            area.SetActive(false);
+        }*/
+
+        if (area != null)
         {
             area.SetActive(false);
         }
@@ -88,7 +93,7 @@ public class Tower : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, range);
     }
 
-    bool IsMouseOverThis()
+    /*bool IsMouseOverThis()
     {
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         // Raycast csak akkor tér vissza true-val, ha ez az objektum van legfelül
@@ -99,5 +104,21 @@ public class Tower : MonoBehaviour
 
         return false;
 
+    }*/
+
+    private void OnMouseEnter()
+    {
+        if (area != null)
+        {
+            area.SetActive(true);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (area != null)
+        {
+            area.SetActive(false);
+        }
     }
 }

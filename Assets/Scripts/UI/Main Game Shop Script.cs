@@ -127,10 +127,13 @@ public class ButtonScript : MonoBehaviour
 
     private void PlaceWeaponRobot()
     {
-        RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        int placingTowerLayer = LayerMask.NameToLayer("Tower");
+        int layerMask = ~(1 << placingTowerLayer);
+        RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, layerMask);
 
         if (hit.collider != null && hit.collider.CompareTag("TowerSpot"))
         {
+            currentRobot.layer = LayerMask.NameToLayer("Default");
             TowerSpot towerSpot = hit.collider.GetComponent<TowerSpot>();
 
             if (towerSpot != null && !towerSpot.isOccupied)
