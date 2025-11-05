@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
 
+    public void SetHealth(int health)
+    {
+        currentHealth = health;
+    }
+
     public int CurrentMoney 
     { 
         get 

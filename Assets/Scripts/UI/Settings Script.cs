@@ -4,7 +4,10 @@ using UnityEngine.UI;
 public class SettingsScript : MonoBehaviour
 {
 
-    public Slider healthSlider;
+    [SerializeField] Slider healthSlider;
+    [SerializeField] Slider moneySlider;
+    [SerializeField] ButtonScript buttonScript;
+    [SerializeField] GameManager gameManagerScript;
     public Button saveButton;
     public Button cancelButton;
     public GameObject settingsObject;
@@ -20,6 +23,16 @@ public class SettingsScript : MonoBehaviour
     void SaveSettings()
     {
         //TODO: beállítások átvitele a fõjátékba
+
+        if (buttonScript != null)
+            buttonScript.SetRobotCost((int)Mathf.Floor((moneySlider.value + 10) * 10));
+        else
+            Debug.LogError("Nem található a button script.");
+
+        if (gameManagerScript != null)
+            gameManagerScript.SetHealth((int)Mathf.Floor((healthSlider.value + 10) * 20));
+        else
+            Debug.LogError("Nem található a game manager script.");
 
         CancelSettings();
     }

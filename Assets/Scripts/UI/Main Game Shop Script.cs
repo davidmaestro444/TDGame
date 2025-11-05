@@ -11,9 +11,12 @@ public class ButtonScript : MonoBehaviour
     public Camera mainCamera;
     private GameObject currentRobot;
 
-
-
     public int robotCost = 10;
+
+    public void SetRobotCost(int cost)
+    {
+        robotCost = cost;
+    }
 
     void Update()
     {

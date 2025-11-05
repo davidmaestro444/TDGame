@@ -10,8 +10,9 @@ public class MenuScript : MonoBehaviour
     public GameObject menuObject;
     public GameObject mainGameObject;
     public GameObject settingsObject;
+    public GameObject background;
+    public GameObject towerSpots;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         startButton.onClick.AddListener(StartGame);
@@ -19,14 +20,17 @@ public class MenuScript : MonoBehaviour
         exitButton.onClick.AddListener(ExitGame);
         mainGameObject.SetActive(false);
         settingsObject.SetActive(false);
+        background.SetActive(false);
         menuObject.SetActive(true);
+        towerSpots.SetActive(false);
     }
 
     void StartGame()
     {
         menuObject.SetActive(false);
         mainGameObject.SetActive(true);
-        //TODO: játék elindítása innen
+        background.SetActive(true);
+        towerSpots.SetActive(true);
     }
     
     void OpenSettings()
