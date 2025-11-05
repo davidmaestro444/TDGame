@@ -13,6 +13,11 @@ public class MenuScript : MonoBehaviour
     public GameObject background;
     public GameObject towerSpots;
 
+    public void GameOverScript()
+    {
+        Start();
+    }
+
     void Start()
     {
         startButton.onClick.AddListener(StartGame);

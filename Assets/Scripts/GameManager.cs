@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int currentMoney;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI moneyText;
+    public Button exitButton;
+    public MenuScript menuScript;
 
     public void SetHealth(int health)
     {
@@ -42,6 +45,7 @@ public class GameManager : MonoBehaviour
         currentHealth = maxHealth;
         currentMoney = startingMoney;
         UpdateUI();
+        exitButton.onClick.AddListener(GameOver);
     }
 
     public void TakeDamage(int damageAmount)
@@ -77,9 +81,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void GameOver()
+    public void GameOver()
     {
         Debug.Log("GAME OVER!");
         Time.timeScale = 0f;
+
+        menuScript.GameOverScript();
     }
+
 }

@@ -25,12 +25,12 @@ public class SettingsScript : MonoBehaviour
         //TODO: beállítások átvitele a fõjátékba
 
         if (buttonScript != null)
-            buttonScript.SetRobotCost((int)Mathf.Floor((moneySlider.value + 10) * 10));
+            buttonScript.SetRobotCost((int)moneySlider.value);
         else
             Debug.LogError("Nem található a button script.");
 
         if (gameManagerScript != null)
-            gameManagerScript.SetHealth((int)Mathf.Floor((healthSlider.value + 10) * 20));
+            gameManagerScript.SetHealth((int)healthSlider.value);
         else
             Debug.LogError("Nem található a game manager script.");
 
