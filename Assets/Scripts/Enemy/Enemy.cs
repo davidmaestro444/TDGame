@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void Die()
+    public void Die()
     {
         GameManager.instance.AddMoney(data.moneyOnKill);
         gameObject.SetActive(false);
